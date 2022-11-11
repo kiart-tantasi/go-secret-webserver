@@ -18,3 +18,4 @@ secret
 deployment.yaml
 secretprovider.yaml
 serviceaccount.yaml
+service.yaml
