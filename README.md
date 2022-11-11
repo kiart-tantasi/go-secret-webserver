@@ -1,3 +1,5 @@
+# deployment.yaml
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -16,6 +18,6 @@ spec:
     spec:
       containers:
       - name: secret
-        image: # image-url
+        image: image-url
         ports:
         - containerPort: 8080
