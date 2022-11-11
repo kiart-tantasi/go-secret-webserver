@@ -16,3 +16,5 @@
 
 secret
 deployment.yaml
+secretprovider.yaml
+serviceaccount.yaml
