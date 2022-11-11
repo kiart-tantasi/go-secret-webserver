@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sumato
+  labels:
+    app: sumato
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sumato
+  template:
+    metadata:
+      labels:
+        app: sumato
+    spec:
+      serviceAccountName: sumato-service-account
+      containers:
+      - name: sumato
+        image: 123456780000.dkr.ecr.us-east-1.amazonaws.com/image:latest
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - name: sumato
+          mountPath: "/mnt/secrets-store"
+          readOnly: true
+        env:
+        - name: SECRET
+          valueFrom:
+            secretKeyRef:
+              name: test-secret-name
+              key: test
+      volumes:
+      - name: sumato
+        csi:
+          driver: secrets-store.csi.k8s.io
+          readOnly: true
+          volumeAttributes:
+            secretProviderClass: "sumato-secret-provider"
