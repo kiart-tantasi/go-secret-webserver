@@ -10,7 +10,7 @@
             "Condition": {
                 "StringEquals": {
                     "<oidc-provider>:aud": "sts.amazonaws.com",
-                    "<oidc-provider>:sub": "system:serviceaccount:<namespace>:<service-account>"
+                    "<oidc-provider>:sub": "system:serviceaccount:<namespace>:<service-account-name>"
                 }
             }
         },
